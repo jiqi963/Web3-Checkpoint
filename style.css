@@ -1,13 +1,27 @@
 body{
     margin: 0 auto;
-    max-width: 50 em;
+    
 	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
 	line-height: 1.5;
 	padding: 4em,1em;
-	color: 555；
+	color: 555555;
 	
 }
 h2{
 	margin-top: 1em;
 	padding-top: 1em;
+}
+
+.container{
+	display: grid;
+	grid-template-columns: 33% 33% 33%;
+	grid-template-rows: auto auto auto;
+
+}
+.grid-item{
+	
+	align-content: center;
+	text-align: center;
+	image-resolution: 100%;
+	
 }
