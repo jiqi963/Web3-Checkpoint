@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+                    <link rel="stylesheet" href="css/style.css">
+                    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+                    <script src="js/script.js"></script>
+                    <title>HomePage</title>
+                    </head>
+   
+<body>
+    <header>
+        <div class="contarner">
+            <h1 class="title">Web3 page</h1>
+            <strong>
+                <nav class="navbar navbar-expand-sm bg-warning navbar-dark">
+                <ul class="navbar">
+                  <li class="nav-item"> <a href="{{url_for('index')}}" class="nav-link">Home Page</a> </li>
+                  <li class="nav-item"> <a href="{{url_for('1.1')}}" class="nav-link">Insporation</a> </li>
+                  <li class="nav-item"> <a href="{{url_for('1.2')}}" class="nav-link">Page Two</a> </li>
+                </ul>
+              </nav></strong>
+        </div>
+    </header>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
