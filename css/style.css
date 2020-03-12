@@ -1,0 +1,32 @@
+https://raw.githubusercontent.com/jiqi963/Web3-Homepage/master/img/background.jpghttps://raw.githubusercontent.com/jiqi963/Web3-Homepage/master/img/background.jpghttps://raw.githubusercontent.com/jiqi963/Web3-Homepage/master/img/background.jpghttps://raw.githubusercontent.com/jiqi963/Web3-Homepage/master/img/background.jpghttps://raw.githubusercontent.com/jiqi963/Web3-Homepage/master/img/background.jpghttps://raw.githubusercontent.com/jiqi963/Web3-Homepage/master/img/background.jpghttps://raw.githubusercontent.com/jiqi963/Web3-Homepage/master/img/background.jpghttps://raw.githubusercontent.com/jiqi963/Web3-Homepage/master/img/background.jpghttps://raw.githubusercontent.com/jiqi963/Web3-Homepage/master/img/background.jpghttps://raw.githubusercontent.com/jiqi963/Web3-Homepage/master/img/background.jpghttps://raw.githubusercontent.com/jiqi963/Web3-Homepage/master/img/background.jpghttps://raw.githubusercontent.com/jiqi963/Web3-Homepage/master/img/background.jpghttps://raw.githubusercontent.com/jiqi963/Web3-Homepage/master/img/background.jpgbody {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  line-height: 1.5;
+  color: 555555;
+}
+h2 {
+  margin-top: 1em;
+  padding-top: 1em;
+}
+.grid-item {
+  align-content: center;
+  text-align: center;
+}
+.grid-item img {
+  max-width: 90%;
+}
+@media screen and (max-width:800px) {
+  .container {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    margin: auto;
+    grid-gap: 10px;
+  }
+  .grid-item img {
+    max-width: 90%;
+  }
+}
