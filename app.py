@@ -1,9 +1,11 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 from mongoengine import *
 connect('web3')
 
 
-app = Flask(__name__)
+app = Flask(__name__,
+        static_url_path='',
+        template_folder='../Web3-Homepage/templates')
 
 @app.route('/')
 @app.route('/index')
