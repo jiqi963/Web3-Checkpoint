@@ -1,6 +1,18 @@
 from flask import Flask, render_template, url_for
 from mongoengine import *
+
 connect('web3')
+
+
+class Country(Document):
+    name = StringField()
+
+China = Country(Continent='Asia', CountryCode='CN')
+China.save()
+NewZealand = Country(Continent='Oceania',CountryCode='NZ' )
+NewZealand.save()
+
+
 
 
 app = Flask(__name__,
@@ -21,7 +33,7 @@ def  pageone():
 
 @app.route('/pagetwo')
 def pagetwo():
-    return render_template('pagetwo.html')	
+    return render_template('pagetwo.html',Country=Country.objects)	
 	
 if __name__ == '__main__':
     app.run(debug=True)
