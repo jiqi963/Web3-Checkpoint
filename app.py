@@ -5,19 +5,21 @@ connect('web3')
 
 
 class Country(Document):
-    name = StringField()
-
-China = Country(Continent='Asia', CountryCode='CN')
-China.save()
-NewZealand = Country(Continent='Oceania',CountryCode='NZ' )
-NewZealand.save()
-
+    Continent = StringField()
+    CountryCode = StringField()
 
 
 
 app = Flask(__name__,
         static_url_path='',
         template_folder='../Web3-Homepage/templates')
+
+
+China = Country(Continent='Asia', CountryCode='CN')
+China.save()
+NewZealand = Country(Continent='Oceania',CountryCode='NZ' )
+NewZealand.save()
+
 
 @app.route('/')
 @app.route('/index')
@@ -33,7 +35,8 @@ def  pageone():
 
 @app.route('/pagetwo')
 def pagetwo():
-    return render_template('pagetwo.html',Country=Country.objects)	
-	
+    return render_template('pagetwo.html')	
+
+
 if __name__ == '__main__':
     app.run(debug=True)
