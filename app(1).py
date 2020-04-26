@@ -10,13 +10,15 @@ class Country(Document):
 
 
 
-app = Flask(__name__)
+app = Flask(__name__,
+        static_url_path='',
+        template_folder='../Web3-Homepage/templates')
 
 
-#China = Country(Continent='Asia', CountryCode='CN')
-#China.save()
-#NewZealand = Country(Continent='Oceania',CountryCode='NZ' )
-#NewZealand.save()
+China = Country(Continent='Asia', CountryCode='CN')
+China.save()
+NewZealand = Country(Continent='Oceania',CountryCode='NZ' )
+NewZealand.save()
 
 
 @app.route('/')
@@ -33,22 +35,21 @@ def  pageone():
 
 @app.route('/pagetwo')
 def pagetwo():
-    return render_template('pagetwo.html')	
+    return render_template('pagetwo.html', countries=Country.object)	
 
 
+if __name__ == '__main__':
+    app.run(host='10.25.138.114', port=80)
 
 # API part
+
 @app.route('/countries', methods=['GET','POST','PUT'])
 @app.route('/countries/<CountryCode>', methods=['GET'])
+
 def getCountry(CountryCode=None):
 	countries=None
 	if CountryCode is None:
 		countries = Country.objects
 	else:
-		countries = Country.object.get(CountryCode=CountryCode)
+		countries = Country.object.get(id=CountryCode)
 	return countries.to_json()
-
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
