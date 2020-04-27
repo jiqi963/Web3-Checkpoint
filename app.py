@@ -10,14 +10,6 @@ class Country(Document):
 
 app = Flask(__name__)
 
-China = Country(CountryID='1',Continent='Asia', CountryCode='CN')
-China.save(force_insert=False)
-
-NewZealand = Country(CountryID='2',Continent='Oceania',CountryCode='NZ')
-NewZealand.save(force_insert=True)
-
-UK = Country(CountryID='3',Continent='Europe', CountryCode='UK')
-UK.save(force_insert=True)
 
 
 @app.route('/')
@@ -36,7 +28,20 @@ def pagetwo():
     return render_template('pagetwo.html')	
 
 
+@app.route('/createdata')
+def create():
 
+	China = Country(CountryID='1',Continent='Asia', CountryCode='CN')
+	China.save(force_insert=False)
+	NewZealand = Country(CountryID='2',Continent='Oceania',CountryCode='NZ' )
+	NewZealand.save(force_insert=True)
+
+	return render_template('index.html')
+@app.route('/deletedata')
+def delete():
+
+	db.country.drop()
+	return render_template('index.html')
 
 # API part
 @app.route('/countries', methods=['GET','POST','PUT'])
