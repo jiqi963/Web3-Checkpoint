@@ -1,6 +1,8 @@
 from flask import Flask, render_template, url_for
 from mongoengine import *
 
+app.config.from_object('config')
+
 connect('web3')
 
 class Country(Document):
@@ -10,13 +12,19 @@ class Country(Document):
 
 app = Flask(__name__)
 
-
-
 @app.route('/')
 @app.route('/index')
 @app.route('/home')
 def index():
     index= "Index"
+    for file in op.listdir(app.config['FILES_FOLDER']):
+        filename = op.fsdecode(file)
+        path = os.path.join(app.config['FILES_FOLDER'],"data1.csv")
+        f = open(path)
+        r = csv.reader(f)
+        d = list(r)
+        for data in d
+            print(data)
     return render_template('index.html', title=index)
 
 @app.route('/pageone')
@@ -27,7 +35,6 @@ def pageone():
 def pagetwo():
     return render_template('pagetwo.html')	
 
-
 @app.route('/createdata')
 def create():
 
@@ -37,13 +44,7 @@ def create():
 	NewZealand.save(force_insert=True)
 
 	return render_template('index.html')
-@app.route('/deletedata')
-def delete():
 
-	db.country.drop()
-	return render_template('index.html')
-
-# API part
 @app.route('/countries', methods=['GET','POST','PUT'])
 @app.route('/countries/<CountryCode>', methods=['GET'])
 def getCountry(CountryCode=None):
@@ -53,9 +54,6 @@ def getCountry(CountryCode=None):
 	else:
 		countries = Country.objects.get(CountryCode=CountryCode)
 	return countries.to_json()
-
-#	except Exception as e:
-#		return render_template('pagetwo.html',error=error)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',debug=True, port=80)
