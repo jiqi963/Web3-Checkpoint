@@ -1,7 +1,6 @@
 from flask import Flask, render_template, url_for
 from mongoengine import *
-import os
-import csv
+import os, csv
 
 
 connect('web3')
@@ -22,7 +21,7 @@ app.config.from_object('config')
 @app.route('/home')
 def index():
     index= "Index"
-    return render_template('index.html', title=index)
+    return render_template('index.html', title=index),200
 
 @app.route('/pageone')
 def pageone():
@@ -37,9 +36,27 @@ def create():
 
 	China = Country(CountryID='1',Continent='Asia', CountryCode='CN')
 	China.save(force_insert=False)
-	NewZealand = Country(CountryID='2',Continent='Oceania',CountryCode='NZ' )
+	NewZealand = Country(CountryID='2',Continent='Oceania',CountryCode='NZ')
 	NewZealand.save(force_insert=True)
+	UK = Country(CountryID='3',Continent='Europe', CountryCode='UK')
+	UK.save()
+	
+	
 	return render_template('index.html')
+
+@app.route('/drop')
+def drop():
+	
+	country = Country.objects
+	country.delete()
+	return render_template('index.html')
+
+
+$.get("/countries",function(response){
+	console.log(response);
+})
+
+
 
 @app.route('/countries', methods=['GET','POST','PUT'])
 @app.route('/countries/<CountryCode>', methods=['GET'])
