@@ -1,10 +1,13 @@
-alert("Hello");
+$(document).ready(function(){
 
 function displayDate(){
 	document.getElementById("showtime").innerHTML=Date();
 }
 
-//document.getElementById("showdate").onclick=function(){displayDate()};
-//function displayDate(){
-//	document.getElementById("Demo").innerHTML=Date();
-//}
+$.get("/countries",function(){
+	alert('Load sccess');
+}).fail(function(){
+	alert('Load fail');
+});
+
+});
