@@ -51,13 +51,6 @@ def drop():
 	country.delete()
 	return render_template('index.html')
 
-
-$.get("/countries",function(response){
-	console.log(response);
-})
-
-
-
 @app.route('/countries', methods=['GET','POST','PUT'])
 @app.route('/countries/<CountryCode>', methods=['GET'])
 def getCountry(CountryCode=None):
