@@ -1,8 +1,8 @@
 $(document).ready(function(){
 
-function displayDate(){
-	document.getElementById("showtime").innerHTML=Date();
-};
+$('button#toggle-1').click(_ => {
+		$('p1').toggle()
+	})
 
 $.ajax('/createdata',{
 	type: 'get',
